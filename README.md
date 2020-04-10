@@ -13,6 +13,8 @@ It Provide a very highlevel understanding of a test case, shown in simple Englis
 
 * [cucumber-html-reporter](https://github.com/gkushang/cucumber-html-reporter#readme): is a simple Html report generator that convert the generated CucumberJS .Json report to an html viewable report.
 
+* [fast-xml-parser](https://www.npmjs.com/package/fast-xml-parser): is an XML parser, as the call returned from the TradeMeSandbox is XML and not a JASON file.
+
 
 ## Getting Started
 There are two ways to run the project, by openning a bash command line (if running in windows or regular commandline on linux)
@@ -30,10 +32,12 @@ npm i
 npm run lint
 npm run test
 npm run report
+npm run apiTestFunction
 ```
 Note:
 Assuming your machine alraedy got all required NodeJS and NPM files installed and up to date to latest verion.
-Currently running on NodeJS v11.14.0 and NPM v6.7.0 on Windows
+Currently running on NodeJS v12.16.1 and NPM v6.13.4 on Windows
+Or NodeJS v13.12.0 and NPM v6.14.4 on Linux
 
 ## Code Sturcture
 
@@ -55,3 +59,4 @@ The code structure follows the basic setup presented by [CucumberJS](https://git
        * API: Contains all the API calls that are shown in the design document, in our case is the test guideline given to me.
        * Features: Conains all the Cucumber/Gherkin tests
        * Step_defintions: Contains the code that combines both Features and API code
+* apiTestFunction: is just a smple Javascript code running the same code uses in the feature file but it is running with CucumberJS and with minimal verification for only returning the requriments as shown in the Flux Exercise sheet

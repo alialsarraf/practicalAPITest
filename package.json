@@ -7,7 +7,8 @@
     "test": "cucumber-js -p smoke",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
-    "report": "node index.js"
+    "report": "node index.js",
+    "apiTestFunction": "node apiTestFunction.js --unhandled-rejections=warn"
   },
   "keywords": [
     "Test",
