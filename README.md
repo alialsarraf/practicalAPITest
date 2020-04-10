@@ -36,8 +36,16 @@ npm run apiTestFunction
 ```
 Note:
 Assuming your machine alraedy got all required NodeJS and NPM files installed and up to date to latest verion.
-Currently running on NodeJS v12.16.1 and NPM v6.13.4 on Windows
-Or NodeJS v13.12.0 and NPM v6.14.4 on Linux
+* Windows running on NodeJS v12.16.1 and NPM v6.13.4
+* Linux running on NodeJS v13.12.0 and NPM v6.14.4, if you got 
+```
+bash: ./runProject.sh: Permission denied
+```
+run the following command
+```
+chmod u+x ./runProject.sh
+./runProject.sh
+```
 
 ## Code Sturcture
 
