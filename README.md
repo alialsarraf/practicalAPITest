@@ -15,7 +15,7 @@ It Provide a very highlevel understanding of a test case, shown in simple Englis
 
 
 ## Getting Started
-There are two ways to run the project, by openning any command line
+There are two ways to run the project, by openning a bash command line (if running in windows or regular commandline on linux)
 
 * Run 
 ```
