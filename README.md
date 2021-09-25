@@ -1,17 +1,53 @@
 # Practical Test (API) Project
 
-## Project Outline
+## Agile Test Approach 
+For this project, I broke down the test approach as follow:
 
-This project is a simple API automation framework that Request Promise Native, and Chai which are a collection java scripts librarys as it's core components.
+* Test first the UI and understand the basic use journey of what the website try to provide.
+* Breakdown all the UI functionality and highlight what I believe is an issue or working as expected based on my previous experience. 
+* From the UI, I open the Google Developer tool and monitor all the API calls and see the level of functionality of the API and see what can be consider as an issue or expected.
+
+
+## Bug Report
+
+UI Issues:
+
+* Car details: When clicking on the car image, it takes you back to the dashboard. This can be expected feature but I felt like the image will .
+* Profile Update: 
+* Maker Page: User not able to return to dashboard when clicking Rating Buggy logo on top of the page from the Makers Page. For example if you proceed to Lamborghini page and you click on Rating Buggy, the user remain on the maker page and on the bottom left corner you will see the URL with \broken.
+* Make Page: Found a few issues
+  * Model and Rank toggles doesn't do anything. Taking the behavior the buttons are clickable 
+  * Votes, change the ordering on random, instead of ascending or descending order. Checking the Network call, the API call is set to return the order on random.
+*  
+
+
+API Issues:
+
+* Update Profile: If I added a text instead of a number as age, I get a 502 system error in the API call. 
+But I can see the UI is doing inline error message which cover this issue. The API should return a value 400 error, as it can exposed as its own to a different UI. We need to consider each code as its own product and can function as expected.
+
+## Automation Test coverage
+
+The five top critical functionality we can cover in the API level testing will
+
+* Registration
+* Login
+* User Profile update
+* Voting
+* Dashboard
+
+## Project Outline ---- STILL NEED WORK
+
+This project is a simple API automation framework that Request Promise Native, and Chai which are a collection java scripts library's as it's core components.
+
+* [Mocha](https://mochajs.org/): Is the main core of this example test framework, it is a popular JavaScript test framework, running on Node.JS and in the browser.
 
 * [Request Promise Native](https://github.com/request/request-promise-native): The simplified HTTP request client 'request' with Promise support. Which can help us in triggering all the requests calls similar to what you can do when using Postman or any similar request triggering libraries.
 
-* [Chai](https://www.chaijs.com/): is a BDD / TDD assertion library for node and the browser that can be delightfully paired with any javascript testing framework.
-
-* [fast-xml-parser](https://www.npmjs.com/package/fast-xml-parser): is an XML parser, as the call returned from the TradeMeSandbox is XML and not a JASON file.
+* [Chai](https://www.chaijs.com/): is a BDD / TDD assertion library for node and the browser that can be delightfully paired with any JavaScript testing framework.
 
 ## Getting Started
-There are two ways to run the project, by openning a bash command line (if running in windows or regular commandline on linux)
+There are two ways to run the project, by lunching the bash command line (if running in windows or regular command line on Linux)
 
 * Run 
 ```
@@ -29,9 +65,9 @@ npm run report
 npm run apiTestFunction
 ```
 Note:
-Assuming your machine alraedy got all required NodeJS and NPM files installed and up to date to latest verion.
-* Windows running on NodeJS v12.16.1 and NPM v6.13.4
-* Linux running on NodeJS v13.12.0 and NPM v6.14.4, if you got 
+Assuming your machine already got all required NodeJS and NPM files installed and up to date to latest version.
+* Windows running on NodeJS v16.10.0 and NPM v7.24.1
+ 
 ```
 bash: ./runProject.sh: Permission denied
 ```
@@ -41,7 +77,7 @@ chmod u+x ./runProject.sh
 ./runProject.sh
 ```
 
-## Code Sturcture
+## Code Structure
 
 The code structure follows the basic setup.
    
@@ -50,11 +86,8 @@ The code structure follows the basic setup.
      * Constants: Contain all constant data that we might need to re-use in any part of the code.
      * Core: Contains the core Project Native Promise calls, which make it easier for us to create and trigger any REST calls when needed.
      * Resources: Contains a set of JSON files, that we need to use as either payload or compare responses.
-     * Utils: a utitlity folder contains any files we need and feels it can be stored under this folder.
-     * init.js: Is a cucumberJS initiation file to override any default value or start our custom world object
-
+     * Utils: a utility folder contains any files we need and feels it can be stored under this folder.
    * testCoverage: Contains all test related files
        * API: Contains all the API calls that are shown in the design document, in our case is the test guideline given to me.
-       * Features: Conains all the Cucumber/Gherkin tests
-       * Step_defintions: Contains the code that combines both Features and API code
-* apiTestFunction: is just a smple Javascript code running the same code uses in the feature file but it is running with CucumberJS and with minimal verification for only returning the requriments as shown in the IAG Exercise sheet
+       * practcal_test.spec: Is the test file that contains all our test scenarios
+* apiTestFunction: is just a simple Javascript code running the same code uses in the feature file but it is running with CucumberJS and with minimal verification for only returning the requirements as shown in the IAG Exercise sheet

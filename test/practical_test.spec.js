@@ -7,7 +7,7 @@ const iagTest = require('./test/api/practicalTest_api');
 
 describe('Running test for the interview', () => {
   before('a user perform a GET call', async () => {
-    this.response = await iagTest.getData();    
+    this.response = await iagTest.getData();
   });
 
   it('returns the total number of {int} named brands of used cars', () => {
