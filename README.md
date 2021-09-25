@@ -2,19 +2,13 @@
 
 ## Project Outline
 
-This project is a simple API automation framework BDD that uses CucumberJS, Request Promise Native, Chai, and Cucumber-html Reporter which are a collection java scripts librarys as it's core components.
-
-* [CucumberJS](https://github.com/cucumber/cucumber-js): is a javascript version of Cucumber/Gherkin library, which present a test scenario that is readble and easy access to any person who is not much into coding or able to read line of code. 
-It Provide a very highlevel understanding of a test case, shown in simple English term.
+This project is a simple API automation framework that Request Promise Native, and Chai which are a collection java scripts librarys as it's core components.
 
 * [Request Promise Native](https://github.com/request/request-promise-native): The simplified HTTP request client 'request' with Promise support. Which can help us in triggering all the requests calls similar to what you can do when using Postman or any similar request triggering libraries.
 
 * [Chai](https://www.chaijs.com/): is a BDD / TDD assertion library for node and the browser that can be delightfully paired with any javascript testing framework.
 
-* [cucumber-html-reporter](https://github.com/gkushang/cucumber-html-reporter#readme): is a simple Html report generator that convert the generated CucumberJS .Json report to an html viewable report.
-
 * [fast-xml-parser](https://www.npmjs.com/package/fast-xml-parser): is an XML parser, as the call returned from the TradeMeSandbox is XML and not a JASON file.
-
 
 ## Getting Started
 There are two ways to run the project, by openning a bash command line (if running in windows or regular commandline on linux)
@@ -49,11 +43,7 @@ chmod u+x ./runProject.sh
 
 ## Code Sturcture
 
-The code structure follows the basic setup presented by [CucumberJS](https://github.com/cucumber/cucumber-js). 
-* Cucumber.js located in the root folder, contains the main configuration needed to be able to start and run the tests. 
-
-* features: will contains the following folders
-   * reports: will contains the generated report after each run, it's a json generated report.
+The code structure follows the basic setup.
    
    * support: handles all re-usable or setup files needed for the project and 
    make it easy to re-use the code as needed.
@@ -67,4 +57,4 @@ The code structure follows the basic setup presented by [CucumberJS](https://git
        * API: Contains all the API calls that are shown in the design document, in our case is the test guideline given to me.
        * Features: Conains all the Cucumber/Gherkin tests
        * Step_defintions: Contains the code that combines both Features and API code
-* apiTestFunction: is just a smple Javascript code running the same code uses in the feature file but it is running with CucumberJS and with minimal verification for only returning the requriments as shown in the Flux Exercise sheet
+* apiTestFunction: is just a smple Javascript code running the same code uses in the feature file but it is running with CucumberJS and with minimal verification for only returning the requriments as shown in the IAG Exercise sheet

@@ -2,11 +2,10 @@
 // Project Dependencies
 const { expect } = require('chai');
 // API Objects
-const flux = require('./features/testCoverage/api/practicalTest_api');
-
+const test = require('./test/test/api/practicalTest_api');
 
 async function hello() {
-  const response = await flux.getData();
+  const response = await test.getData();
   const category = response.Category.Subcategories.Category;
   console.log('Return number of Named brands are ', category.length);
   let totalNumberOfKia = 0;
