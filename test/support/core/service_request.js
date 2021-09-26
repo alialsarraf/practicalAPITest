@@ -22,6 +22,11 @@ const httpRequests = {
 const requestService = {
   get: (uri, header, full = true) => httpRequests.callRequest('GET', uri, header, full, ''),
   post: (uri, header, requestBody) => httpRequests.callRequest('POST', uri, header, true, requestBody),
+  postForm: (uri, header, requestBody) => httpRequests.callRequest('POST', uri, header, true, requestBody).form({
+    grant_type: 'password',
+    username: 'iagtest2',
+    password: 'Test111@'
+  }),
   delete: (uri, header) => httpRequests.callRequest('DELETE', uri, header, true, ''),
   deleteWithBody: (uri, header, requestBody) => httpRequests.callRequest('DELETE', uri, header, true, requestBody),
   put: (uri, header, requestBody) => httpRequests.callRequest('PUT', uri, header, true, requestBody)

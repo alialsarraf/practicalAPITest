@@ -36,6 +36,10 @@ The five top critical functionality we can cover in the API level testing will
 * Voting
 * Dashboard
 
+Note:
+
+  Login is an important flow but since I'm implementing an API test coverage. Login will be run for almost every test as we will need the Bearer Token to be able to run all the other API calls, so it will be run as a hook, if login fail, then we will not need to run all the tests.
+
 ## Project Outline ---- STILL NEED WORK
 
 This project is a simple API automation framework that Request Promise Native, and Chai which are a collection java scripts library's as it's core components.
@@ -46,8 +50,10 @@ This project is a simple API automation framework that Request Promise Native, a
 
 * [Chai](https://www.chaijs.com/): is a BDD / TDD assertion library for node and the browser that can be delightfully paired with any JavaScript testing framework.
 
+* [Mochawesome](https://www.npmjs.com/package/mochawesome): is a custom reporter for use with the JavaScript testing framework, mocha.
+
 ## Getting Started
-There are two ways to run the project, by lunching the bash command line (if running in windows or regular command line on Linux)
+There are two ways to run the project, by lunching the bash command line (Tested only on Windows but it should run perfectly on Linux)
 
 * Run 
 ```
@@ -61,8 +67,6 @@ There are two ways to run the project, by lunching the bash command line (if run
 npm i
 npm run lint
 npm run test
-npm run report
-npm run apiTestFunction
 ```
 Note:
 Assuming your machine already got all required NodeJS and NPM files installed and up to date to latest version.
@@ -89,5 +93,4 @@ The code structure follows the basic setup.
      * Utils: a utility folder contains any files we need and feels it can be stored under this folder.
    * testCoverage: Contains all test related files
        * API: Contains all the API calls that are shown in the design document, in our case is the test guideline given to me.
-       * practcal_test.spec: Is the test file that contains all our test scenarios
-* apiTestFunction: is just a simple Javascript code running the same code uses in the feature file but it is running with CucumberJS and with minimal verification for only returning the requirements as shown in the IAG Exercise sheet
+       * practical_api_test.spec: Is the test file that contains all our test scenarios

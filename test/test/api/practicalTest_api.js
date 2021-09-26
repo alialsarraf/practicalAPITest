@@ -1,46 +1,71 @@
-const parser = require('fast-xml-parser');
-const he = require('he');
 const { expect } = require('chai');
 
 const { createHeader } = require('../../support/utils/helpers');
 const { requestService } = require('../../support/core/service_request');
+const { HEADER } = require('../../support/constants/constants');
 
-const options = {
-  attributeNamePrefix: '@_',
-  attrNodeName: 'attr', // default is 'false'
-  textNodeName: '#text',
-  ignoreAttributes: true,
-  ignoreNameSpace: false,
-  allowBooleanAttributes: false,
-  parseNodeValue: true,
-  parseAttributeValue: false,
-  trimValues: true,
-  cdataTagName: '__cdata', // default is 'false'
-  cdataPositionChar: '\\c',
-  parseTrueNumberOnly: false,
-  arrayMode: false, // "strict"
-  attrValueProcessor: (val) => he.decode(val, { isAttributeValue: true }),
-  tagValueProcessor: (val) => he.decode(val),
-  stopNodes: ['parse-me-as-string']
+const url = 'https://k51qryqov3.execute-api.ap-southeast-2.amazonaws.com/prod/';
+
+const getToken = async () => {
+  try {
+    const response = await requestService.postForm(`${url}oauth/token`, createHeader());
+    expect(response.statusCode).to.equal(200);
+    return response.body;
+  } catch (error) {
+    console.log('error in Get Access Token ', error);
+    throw error;
+  }
 };
 
-const url = 'https://api.trademe.co.nz/v1/Categories/UsedCars.xml';
-/**
- *
- * @returns {object} selected item
- */
-const getData = async () => {
+const getDashboard = async (authorization) => {
   try {
-    const response = await requestService.get(url, createHeader());
+    const response = await requestService.get(`${url}dashboard`, createHeader(HEADER.AUTHORIZATION, authorization));
     expect(response.statusCode).to.equal(200);
-    const tObj = parser.getTraversalObj(response.body, options);
-    return parser.convertToJson(tObj, options);
+    return response.body;
   } catch (error) {
-    console.log('error in Get Data ', error);
+    console.log('error in Get User dashboard ', error);
+    throw error;
+  }
+};
+
+const getCurrentUser = async (authorization) => {
+  try {
+    const response = await requestService.get(`${url}/users/current`, createHeader(HEADER.AUTHORIZATION, authorization));
+    expect(response.statusCode).to.equal(200);
+    return response.body;
+  } catch (error) {
+    console.log('error in Get Current User details ', error);
+    throw error;
+  }
+};
+
+const getCurrentUserProfile = async (authorization) => {
+  try {
+    const response = await requestService.get(`${url}/users/profile`, createHeader(HEADER.AUTHORIZATION, authorization));
+    expect(response.statusCode).to.equal(200);
+    return response.body;
+  } catch (error) {
+    console.log('error in Get User Profile details ', error);
+    throw error;
+  }
+};
+
+const postModelVote = async (authorization, message) => {
+  try {
+    const body = { comment: message };
+    const response = await requestService.post(`${url}models/c4u1mqnarscc72is00e0|Cc4u1mqnarscc72is00jg/vote`, createHeader(HEADER.AUTHORIZATION, authorization), body);
+    expect(response.statusCode).to.equal(200);
+    return response.body;
+  } catch (error) {
+    console.log('error in POST Users vote ', error);
     throw error;
   }
 };
 
 module.exports = {
-  getData
+  getToken,
+  getDashboard,
+  getCurrentUser,
+  getCurrentUserProfile,
+  postModelVote
 };
