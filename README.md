@@ -37,9 +37,7 @@ The five top critical functionality we can cover in the API level testing will
 * Dashboard
 
 Note:
-
-  Login is an important flow but since I'm implementing an API test coverage. Login will be run for almost every test as we will need the Bearer Token to be able to run all the other API calls, so it will be run as a hook, if login fail, then we will not need to run all the tests.
-
+  * The test will create a new user in every flow, I would prefer using a proper cleanup step to delete the user completely, but with the lack of full openApi or API document.  
 ## Project Outline ---- STILL NEED WORK
 
 This project is a simple API automation framework that Request Promise Native, and Chai which are a collection java scripts library's as it's core components.
@@ -92,5 +90,5 @@ The code structure follows the basic setup.
      * Resources: Contains a set of JSON files, that we need to use as either payload or compare responses.
      * Utils: a utility folder contains any files we need and feels it can be stored under this folder.
    * testCoverage: Contains all test related files
-       * API: Contains all the API calls that are shown in the design document, in our case is the test guideline given to me.
+       * API\practicalTest_api: Contains all the API calls that are shown in the design document, in our case is the test guideline given to me.
        * practical_api_test.spec: Is the test file that contains all our test scenarios

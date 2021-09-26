@@ -4,6 +4,12 @@ const HEADER = {
   CONTENT_TYPE: 'Content-Type'
 };
 
+const CARS = {
+  zondaCarMaker: 'c4u1mqnarscc72is00tg',
+  zondaCarModelPagani: '7Cc4u1mqnarscc72is00u0'
+};
+
 module.exports = {
-  HEADER
+  HEADER,
+  CARS
 };

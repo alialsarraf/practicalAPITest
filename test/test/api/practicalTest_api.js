@@ -6,9 +6,9 @@ const { HEADER } = require('../../support/constants/constants');
 
 const url = 'https://k51qryqov3.execute-api.ap-southeast-2.amazonaws.com/prod/';
 
-const getToken = async () => {
+const getToken = async (username, password) => {
   try {
-    const response = await requestService.postForm(`${url}oauth/token`, createHeader());
+    const response = await requestService.postForm(`${url}oauth/token`, createHeader(), username, password);
     expect(response.statusCode).to.equal(200);
     return response.body;
   } catch (error) {
@@ -50,11 +50,24 @@ const getCurrentUserProfile = async (authorization) => {
   }
 };
 
-const postModelVote = async (authorization, message) => {
+const getModelDetails = async (authorization, makerId, modelId) => {
   try {
-    const body = { comment: message };
-    const response = await requestService.post(`${url}models/c4u1mqnarscc72is00e0|Cc4u1mqnarscc72is00jg/vote`, createHeader(HEADER.AUTHORIZATION, authorization), body);
+    const response = await requestService.get(`${url}models/${makerId}%${modelId}`, createHeader(HEADER.AUTHORIZATION, authorization));
     expect(response.statusCode).to.equal(200);
+    return response.body;
+  } catch (error) {
+    console.log('error in POST Users vote ', error);
+    throw error;
+  }
+};
+
+const createNewUser = async (userName, firstName, lastName, password) => {
+  try {
+    const messageBody = {
+      username: userName, firstName, lastName, password, confirmPassword: password
+    };
+    const response = await requestService.post(`${url}users`, createHeader(), messageBody);
+    expect(response.statusCode).to.equal(201);
     return response.body;
   } catch (error) {
     console.log('error in POST Users vote ', error);
@@ -67,5 +80,6 @@ module.exports = {
   getDashboard,
   getCurrentUser,
   getCurrentUserProfile,
-  postModelVote
+  getModelDetails,
+  createNewUser
 };
